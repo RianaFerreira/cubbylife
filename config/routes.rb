@@ -17,5 +17,5 @@ Cubbylife::Application.routes.draw do
   put '/events/:id' => 'events#update', :as => 'update_event'
 
   resources :units
-
+  get '/search' => 'units#search'
 end

@@ -2,7 +2,15 @@
 
 <!-- search for a unit -->
 <%= form_tag("/search", :method => "get") do %>
-  <%= label_tag(:subject, "Search for unit number ") %>
-  <%= text_field_tag(:subject) %>
+  <%= label_tag(:query, "Search for unit number ") %>
+  <%= text_field_tag(:query) %>
   <%= submit_tag("Find Unit") %>
 <% end %>
+
+<% if @unit.present? %>
+  <h2>Unit Information</h2>
+  <p><%= @unit.name %></p>
+<% else %>
+  <p>Try again, that unit does not exist in the building.</p>
+<% end %>
+

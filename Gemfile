@@ -4,7 +4,9 @@ gem 'rails', '3.2.13'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
-
+# fix asset precompilation failed during deployment by adding this gem and including
+# (config.assets.initialize_on_precompile = false) in config > environments > production.rb file
+# gem 'rails_12factor'
 gem 'pg'
 gem 'haml'
 gem 'bcrypt-ruby', '3.0.0'
