@@ -1,0 +1,9 @@
+<%= form_tag("/new", :method => "post" ) do %>
+  <%= label_tag(:name, "Name") %>
+  <%= text_field_tag(:name) %>
+  <%= label_tag(:email, "Email") %>
+  <%= email_field(:user, :email) %>
+  <%= label_tag(:phone, "Phone") %>
+  <%= telephone_field(:user, :phone) %>
+<% end %>
+<%= render "login" %>

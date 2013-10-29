@@ -14,10 +14,14 @@ User.destroy_all
 Role.destroy_all
 
 
-e1 = Event.create(:name => 'Fire Inspection', :description => 'Compulsory fire damper inspections', :start_date => '2014-07-01', :end_date => '2014-07-03', :start_time => '07:00:00', :end_time => '09:00:00', :provider => 'Fire System Inspectors', :cost => 12000, :frequency => 'Annual')
+e1 = Event.create(:name => 'Fire Inspection', :description => 'Compulsory fire damper inspections', :start => '2014-07-01 07:00:00', :end => '2014-07-03 17:00:00', :provider => 'Fire System Inspectors', :cost => 12000.00, :frequency => 'Annual')
 u1 = Unit.create(:unit_number => '503E', :floor => 5, :occupants => 2, :occupancy_date => '2011-07-01')
 t1 = Tenant.create(:name => 'Fuzzy Lumpkin', :email => 'fuzzy@gmail.com', :phone => '0412015510')
 un1 = User.create(:username => 'fuzzy', :password => 'test')
 r1 = Role.create(:name => 'tenant', :description => 'leases apartment')
+
+p1 = EventParticipation.create(:date => Date.today, :time => Time.now)
+u1.event_participations << p1
+e1.event_participations << p1
 
 

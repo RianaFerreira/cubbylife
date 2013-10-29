@@ -1,2 +1,13 @@
 Use this README file to introduce your application and point to useful places in the API for learning more.
 Run "rake doc:app" to generate API documentation for your models, controllers, helpers, and libraries.
+
+Property management assignment
+Summary:  Create a (web/mobile) solution that can be used to communicate with tenants within a building. Provide features that allow notifications to be sent, appointments to be scheduled, complaints and requests (bicycle storage, fire-stair keys, remote controls) to be logged. A bulletin board should be provided for tenants to post notices, meet-ups, want ads, prefered providers for building services and access information about the building rules and processes.
+
+Components: Configurator (My Building) to identify all the units within the building and their tenants, contact details and the unit owner details for escalations. Capture prefered provider details and type. Capture strata building manager details, availability and escalation points if he is not available. Capture details of building services like garbage collection days, cleaning and any schedule maintenance. Capture details of approved projects for the building improvement. Strata meeting schedule and notifications to the owners, minutes should be uploaded or noted for the schedule item and allow it to be published to the bulletin board for all tenants to view.
+Bulletin board (Building News) to allow the building manager and tenants to log in and create, edit, classify, attach images, upload documents and remove posts. Posts should have a duration and automatically expire once the end date is reached. The expired posts should be archived but the owner should be able to attach supporting documentation or notes (photos of an event, results of a draw). All users should have access to the archived posts.
+Main interface for tenants (Building Interactions) to provide tenants with interfaces to log requests (bicycle access, escalations) for the building manager. Schedule appointments for routine services once the building manager has set-up an event i.e. fire inspections.
+Building diary for a snapshot of scheduled events and building projects.
+Reports for the building manager to identify uptake on a scheduled event.
+
+Actors:   Building manager, tenants, owners, building representatives who attend the strata meetings, agents and building service providers.

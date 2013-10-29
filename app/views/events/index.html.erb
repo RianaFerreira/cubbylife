@@ -1,0 +1,26 @@
+<div class="listEvents">
+  <h2>Scheduled Events</h2>
+  <% if @events.present? %>
+    <% @events.each do |event| %>
+    <p>
+      <%= link_to(event.name, event_path(event.id)) %>
+    </p>
+    <% end %>
+  <% else %>
+    <p>There are no events scheduled.</p>
+  <% end %>
+</div>
+<div class="latestEvent">
+  <% if @next_event.present? %>
+    <ul>
+      <h3><%= @next_event.name %></h3>
+      <li><%= @next_event.description %></li>
+      <li><%= @next_event.start %></li>
+      <li><%= @next_event.end %></li>
+      <li><%= @next_event.provider %></li>
+    </ul>
+    <%= link_to('Edit Event', edit_event_path(@next_event.id)) %>
+    <%= link_to('Delete Event', delete_event_path(@next_event.id)) %>
+  <% end %>
+  <%= link_to('Add Event', new_event_path) %>
+</div>

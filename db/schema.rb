@@ -13,25 +13,23 @@
 
 ActiveRecord::Schema.define(:version => 20131026033250) do
 
-  create_table "eventparticipation", :force => true do |t|
-    t.integer "unit_id"
-    t.integer "event_id"
+  create_table "event_participations", :force => true do |t|
     t.date    "date"
     t.time    "time"
+    t.integer "unit_id"
+    t.integer "event_id"
   end
 
   create_table "events", :force => true do |t|
     t.string   "name"
     t.text     "description"
-    t.date     "start_date"
-    t.date     "end_date"
-    t.time     "start_time"
-    t.time     "end_time"
+    t.datetime "start"
+    t.datetime "end"
     t.string   "provider"
-    t.decimal  "cost"
+    t.decimal  "cost",        :precision => 8, :scale => 2
     t.string   "frequency"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
   end
 
   create_table "roles", :force => true do |t|

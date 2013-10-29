@@ -1,6 +1,6 @@
 class AddEventParticipationTable < ActiveRecord::Migration
   def change
-    create_table :eventparticipation do |t|
+    create_table :event_participations do |t|
       t.date :date
       t.time :time
       t.integer :unit_id

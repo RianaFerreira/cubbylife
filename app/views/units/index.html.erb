@@ -1,0 +1,8 @@
+<h2>Building Units</h2>
+
+<!-- search for a unit -->
+<%= form_tag("/search", :method => "get") do %>
+  <%= label_tag(:subject, "Search for unit number ") %>
+  <%= text_field_tag(:subject) %>
+  <%= submit_tag("Find Unit") %>
+<% end %>

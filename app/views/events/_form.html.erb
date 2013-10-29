@@ -1,0 +1,30 @@
+<div class="event_info">
+    <% if @event.errors.any? %>
+        <ol>
+            <% @event.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+            <% end %>
+        </ol>
+    <% end %>
+  <%= form_for(@event) do |f| %>
+    <%= label_tag(:name, "Name") %>
+    <%= f.text_field :name %><br>
+
+    <%= label_tag(:description, "Description") %>
+    <%= f.text_area :description %><br>
+
+    <%= label_tag(:start, "Start Date")%>
+    <%= f.datetime_select :start %><br>
+
+    <%= label_tag(:end, "End Date")%>
+    <%= f.datetime_select :end %><br>
+
+    <%= label_tag(:provider, "Provider") %>
+    <%= f.text_field :provider %><br>
+
+    <%= label_tag(:cost, "Cost") %>
+    <%= f.text_field :cost %><br>
+
+    <%= submit_tag("Submit") %>
+  <% end %>
+</div>

@@ -3,12 +3,10 @@ class AddEventsTable < ActiveRecord::Migration
     create_table :events do |t|
       t.string :name
       t.text :description
-      t.date :start_date
-      t.date :end_date
-      t.time :start_time
-      t.time :end_time
-      t.string :provide
-      t.decimal :cost
+      t.datetime :start
+      t.datetime :end
+      t.string :provider
+      t.decimal :cost, precision: 8, scale: 2
       t.string :frequency
       t.timestamps
     end

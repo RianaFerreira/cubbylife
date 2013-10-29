@@ -1,0 +1,94 @@
+.field_with_errors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
+/**
+html {
+  height: 100%;
+  background-image: url(cubbylife.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+}
+
+body {
+  height: 100%;
+  max-width: 940px;
+  margin: 0 auto;
+  background-color: rgba(253, 255, 253, .5);
+  font-family: 'Quicksand', sans-serif;
+}
+
+header {
+  text-align: justify;
+  height: 8em;
+  padding: 2em 5%;
+  background: #465259;
+  color: #fff;
+}
+
+header::after {
+  content: '';
+  display: inline-block;
+  width: 100%;
+}
+
+header > div,
+header nav,
+header div h1 {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+header > div {
+  width: 50%;
+  height: 100%;
+  text-align: left;
+}
+
+header > div::before {
+  content: '';
+  display: inline-block;
+  vertical-align: middle;
+  height: 100%;
+}
+header a{
+  text-decoration: none;
+  color: #fff;
+}
+
+.container {
+  padding: 2em;
+}
+
+.latestEvent ul h3 {
+  font-weight: bold;
+}
+
+.latestEvent li {
+  list-style: none;
+  padding: 0.5em;
+}  **/
+
+/******************************************************************/
+/**                    Responsive Style                          **/
+/******************************************************************/
+/**
+@media screen and (max-width: 940px){
+
+  header {
+    height: auto;
+  }
+
+  header > div,
+  header > div h1,
+  header nav {
+    height: auto;
+    width: auto;
+    display: block;
+    text-align: center;
+  }
+
+}  **/

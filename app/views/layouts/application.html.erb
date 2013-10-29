@@ -1,14 +1,42 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <link href='http://fonts.googleapis.com/css?family=Belleza' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet' type='text/css'>
   <title>Cubbylife</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= stylesheet_link_tag    "application", "main", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <header>
+    <div>
+      <h1>CubbyLife</h1><br>
+      <cite>Living in close proximity but out of touch.</cite>
+    </div>
+    <nav>
+        <%= link_to('Home', root_path) %>
+        <%= link_to('Login', login_path) %>
+        <%= link_to('Events', events_path) %>
+        <%= link_to('Units', units_path)%>
+        <!--%== authentication_menu % -->
+    </nav>
+  </header>
+  <div>
+    <% if flash[:notice].present? %>
+      <p><%= flash[:notice] %></p>
+    <% end %>
+  </div>
 
-<%= yield %>
+    <%= yield %>
 
+  <footer>
+    <a>Twitter</a>
+    <a>Google+</a>
+    <a>Pinterest</a>
+    <a>Tumbler</a>
+    <a>Email</a>
+    <a>Comment directly on the site</a>
+  </footer>
 </body>
 </html>

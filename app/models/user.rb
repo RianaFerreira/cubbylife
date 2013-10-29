@@ -13,6 +13,8 @@ class User < ActiveRecord::Base
   has_secure_password
 
   attr_accessible :username, :password, :password_confirmation
+
   belongs_to :tenant
   has_and_belongs_to_many :roles
+
 end

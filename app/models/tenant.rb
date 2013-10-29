@@ -12,6 +12,6 @@
 
 class Tenant < ActiveRecord::Base
   attr_accessible :name, :email, :phone
-  belongs_to :unit, :inverse_of => :tenants
+  belongs_to :unit
   has_one :user
 end
