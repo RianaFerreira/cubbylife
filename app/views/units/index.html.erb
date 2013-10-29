@@ -1,21 +1,27 @@
-<h2>Building Units</h2>
+<div class="unit_actions">
+  <%= link_to('Add Unit', new_unit_path) %>
+  <%= link_to('Find Unit', units_search_path) %>
+</div>
 
-<!-- search for a unit -->
-<%= form_tag("/search", :method => "get") do %>
-  <%= label_tag(:query, "Search for unit number ") %>
-  <%= text_field_tag(:query) %>
-  <%= submit_tag("Find Unit") %>
-<% end %>
+<div class="all_units">
+  <% if @units.present? %>
+    <ul>
+      <% @units.each do |unit| %>
+        <li><%= link_to(unit.unit_number, unit_path(unit.id)) %></li>
+      <% end %>
+    </ul>
+  <% end %>
+</div>
 
-<% if @unit.present? %>
-  <ul>
-    <h2>Unit Information</h2>
-    <li><%= @unit.unit_number %></li>
-    <li><%= @unit.floor %></li>
-    <%= @unit.occupants %></li>
-    <%= @unit.occupancy_date %>
-  </ul>
-<% else %>
-  <p>Try again, that unit does not exist in the building.</p>
-<% end %>
-
+<div class="a_unit">
+  <% if @unit.present? %>
+    <ul>
+      <h2>Unit <%= @unit.unit_number %> Information</h2>
+        <li><%= @unit.floor %></li>
+        <li><%= @unit.occupants %></li>
+        <li><%= @unit.occupancy_date %></li>
+    </ul>
+      <%= link_to('Edit Unit', edit_unit_path(@unit.id)) %>
+      <%= link_to('Delete Unit', unit_path(@unit.id), :method => :delete) %>
+  <% end %>
+</div>

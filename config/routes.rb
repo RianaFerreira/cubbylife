@@ -4,6 +4,7 @@ Cubbylife::Application.routes.draw do
 
   get '/login' => 'session#new'
   post '/login' => 'session#create'
+  delete '/login' => 'session#destroy'
 
   get '/events' => 'events#index'
   get '/events/:id' => 'events#show', :as => 'event'
@@ -16,6 +17,7 @@ Cubbylife::Application.routes.draw do
   get '/events/:id/edit' => 'events#edit', :as => 'edit_event'
   put '/events/:id' => 'events#update', :as => 'update_event'
 
+  get '/units/search' => 'units#search'
   resources :units
-  get '/search' => 'units#search'
+
 end
