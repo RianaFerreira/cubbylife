@@ -3,7 +3,7 @@ class UnitsController < ApplicationController
 
   end
   def search
-    @unit = Unit.find(params[:unit_number])
-
+    @unit = Unit.where(:unit_number => params[:query]).first
+    render "index"
   end
 end

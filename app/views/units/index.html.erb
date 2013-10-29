@@ -8,8 +8,13 @@
 <% end %>
 
 <% if @unit.present? %>
-  <h2>Unit Information</h2>
-  <p><%= @unit.name %></p>
+  <ul>
+    <h2>Unit Information</h2>
+    <li><%= @unit.unit_number %></li>
+    <li><%= @unit.floor %></li>
+    <%= @unit.occupants %></li>
+    <%= @unit.occupancy_date %>
+  </ul>
 <% else %>
   <p>Try again, that unit does not exist in the building.</p>
 <% end %>
