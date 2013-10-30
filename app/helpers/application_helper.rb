@@ -1,11 +1,18 @@
 module ApplicationHelper
   def authentication_menu
+    # Build a list of links depending on the user's permissions.
+    links = ""
     if @authenticated.present?
-      "#{ link_to('Edit Profile', edit_users_path) }" +
-      "#{ link_to('Logout ' + @authenticated.name, login_path, :method => 'delete', :confirm => 'Are you sure?') }"
+    #  if @authenticated.is_admin
+    #    links += "<li>#{link_to("Show Users", users_path)}</li>"
+    #  end
+      links += "#{link_to('Logout', login_path, :method => 'delete', :confirm => 'Are you sure?')} "
+      links += "#{link_to('Events', events_path)} "
+      links += "#{link_to('Units', units_path)} "
     else
-      "#{ link_to('Create Account', new_user_path) }" +
-      "#{ link_to('Login', login_path) }"
+      links += "#{link_to('Login', login_path)} "
     end
+
+    links
   end
 end
