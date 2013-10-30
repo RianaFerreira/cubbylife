@@ -26,7 +26,7 @@ class UnitsController < ApplicationController
   end
 
   def update
-    @unit = Unit.find(params[:id]).first
+    @unit = Unit.find(params[:id])
     if @unit.update_attributes(params[:unit])
       redirect_to unit_path(@unit.id)
     else
@@ -45,7 +45,7 @@ class UnitsController < ApplicationController
     if @unit.present?
       redirect_to unit_path(@unit.id)
     else
-      flash[:notice] = "Invalid Unit Number: Try Again."
+      flash[:notice] = "Invalid Unit Number: Try Again." unless params[:query].nil?
       render "search"
     end
   end

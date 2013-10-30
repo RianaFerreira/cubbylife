@@ -27,6 +27,7 @@ class Event < ActiveRecord::Base
   validate :event_date_after_current
   validate :event_end_after_start
 
+  private
   def event_date_after_current
     if self.start < Time.now
       errors.add(:start, "Can't be before the current date and time")

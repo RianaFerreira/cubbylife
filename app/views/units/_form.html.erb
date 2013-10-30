@@ -1,15 +1,25 @@
-<%= form_for(@unit) do |f| %>
-  <%= label_tag(:unit_number, "Unit Number") %>
-  <%= f.text_field :unit_number %><br>
+<div class="unit_info">
+  <% if @unit.errors.any? %>
+      <ol>
+          <% @unit.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+          <% end %>
+      </ol>
+  <% end %>
 
-  <%= label_tag(:floor, "Floor") %>
-  <%= f.text_field :floor %><br>
+  <%= form_for(@unit) do |f| %>
+    <%= label_tag(:unit_number, "Unit Number") %>
+    <%= f.text_field :unit_number %><br>
 
-  <%= label_tag(:occupants, "Number of Occupants") %>
-  <%= f.text_field :occupants %><br>
+    <%= label_tag(:floor, "Floor") %>
+    <%= f.text_field :floor %><br>
 
-  <%= label_tag(:occupancy_date, "Occupancy Date") %>
-  <%= f.date_select :occupancy_date %><br>
+    <%= label_tag(:occupants, "Number of Occupants") %>
+    <%= f.text_field :occupants %><br>
 
-  <%= submit_tag("Submit") %>
-<% end %>
+    <%= label_tag(:occupancy_date, "Occupancy Date") %>
+    <%= f.date_select :occupancy_date %><br>
+
+    <%= submit_tag("Submit") %>
+  <% end %>
+</div>
