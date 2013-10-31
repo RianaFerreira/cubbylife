@@ -1,10 +1,6 @@
-<div class="unit_actions">
-  <%= link_to('Add Unit', new_unit_path) %>
-  <%= link_to('Find Unit', units_search_path) %>
-</div>
-
-<div class="all_units">
+<div class="col-lg-6">
   <% if @units.present? %>
+  <h4>Registered Apartments in your building</h4>
     <ul>
       <% @units.each do |unit| %>
         <li><%= link_to(unit.unit_number, unit_path(unit.id)) %></li>
@@ -13,15 +9,20 @@
   <% end %>
 </div>
 
-<div class="a_unit">
+<div class="col-lg-6">
+  <%= link_to('Add Unit', new_unit_path, :class => "btn btn-default") %>
+  <%= link_to('Find Unit', units_search_path, :class => "btn btn-default") %>
+</div>
+
+<div class="col-lg-6">
   <% if @unit.present? %>
+    <h4>Apartment <%= @unit.unit_number %> Information</h4>
     <ul>
-      <h2>Unit <%= @unit.unit_number %> Information</h2>
         <li><%= @unit.floor %></li>
         <li><%= @unit.occupants %></li>
         <li><%= @unit.occupancy_date %></li>
     </ul>
-      <%= link_to('Edit Unit', edit_unit_path(@unit.id)) %>
-      <%= link_to('Delete Unit', unit_path(@unit.id), :method => :delete) %>
+      <%= link_to('Edit Unit', edit_unit_path(@unit.id), :class => "btn btn-default") %>
+      <%= link_to('Delete Unit', unit_path(@unit.id), :method => :delete, :class => "btn btn-default") %>
   <% end %>
 </div>

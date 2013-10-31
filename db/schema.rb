@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(:version => 20131026033250) do
     t.string   "name"
     t.text     "email"
     t.integer  "phone"
+    t.integer  "unit_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -64,6 +65,7 @@ ActiveRecord::Schema.define(:version => 20131026033250) do
   create_table "users", :force => true do |t|
     t.string   "username"
     t.string   "password_digest"
+    t.integer  "tenant_id"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
   end

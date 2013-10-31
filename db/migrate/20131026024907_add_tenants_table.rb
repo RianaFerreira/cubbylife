@@ -4,6 +4,7 @@ class AddTenantsTable < ActiveRecord::Migration
       t.string :name
       t.text :email
       t.integer :phone
+      t.integer :unit_id
       t.timestamps
     end
   end

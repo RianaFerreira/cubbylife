@@ -2,11 +2,13 @@ class EventsController < ApplicationController
   def index
     @events = Event.order(:start)
     @next_event = @events.first
+    @participation = EventParticipation.new
   end
 
   def show
    @next_event = Event.find(params[:id])
    @events = Event.order(:start)
+   @participation = EventParticipation.new
    render "index"
   end
 

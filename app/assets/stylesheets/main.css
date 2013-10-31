@@ -4,7 +4,6 @@
   display: table;
 }
 
-/**
 html {
   height: 100%;
   background-image: url(cubbylife.png);
@@ -18,7 +17,6 @@ body {
   max-width: 940px;
   margin: 0 auto;
   background-color: rgba(253, 255, 253, .5);
-  font-family: 'Quicksand', sans-serif;
 }
 
 header {
@@ -59,6 +57,11 @@ header a{
   color: #fff;
 }
 
+.welcome {
+  text-align: right;
+  font-weight: bold;
+}
+
 .container {
   padding: 2em;
 }
@@ -70,12 +73,23 @@ header a{
 .latestEvent li {
   list-style: none;
   padding: 0.5em;
-}  **/
+}
+
+.home {
+  display: inline-block;
+  width: 60%;
+}
+
+.about
+{
+  display: inline-block;
+  width: 35%;
+}
 
 /******************************************************************/
 /**                    Responsive Style                          **/
 /******************************************************************/
-/**
+
 @media screen and (max-width: 940px){
 
   header {
@@ -91,4 +105,5 @@ header a{
     text-align: center;
   }
 
-}  **/
+}
+*/

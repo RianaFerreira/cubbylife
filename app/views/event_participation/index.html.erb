@@ -1,0 +1,13 @@
+ <div class="col-lg-6">
+  <h4>Participants Scheduled for Events</h4>
+  <ul>
+    <% @particpation.each do |p| %>
+      <li><%= p.event.name %> event, apartment <%= p.unit.unit_number %> is participating.</li>
+    <% end %>
+  </ul>
+</div>
+
+<div class="col-lg-6">
+  <p><%= link_to('New Participation', new_event_participation_path, :class => "btn btn-default" ) %></p>
+ </div>
+

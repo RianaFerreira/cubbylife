@@ -1,6 +1,10 @@
-<div class="listEvents">
-  <h2>Scheduled Events</h2>
+<div class="col-lg-6">
+  <h4>Scheduled Events</h4>
+  <p>
+    <%= link_to('Add Event', new_event_path, :class => "btn btn-default") %>
+  </p>
   <% if @events.present? %>
+    <!-- display a list of all events that have been created in order of start date -->
     <% @events.each do |event| %>
     <p>
       <%= link_to(event.name, event_path(event.id)) %>
@@ -10,17 +14,32 @@
     <p>There are no events scheduled.</p>
   <% end %>
 </div>
-<div class="latestEvent">
+<div class="col-lg-6">
+  <!-- by default display the details of the next scheduled event -->
   <% if @next_event.present? %>
+    <h4><%= @next_event.name %></h4>
     <ul>
-      <h3><%= @next_event.name %></h3>
       <li><%= @next_event.description %></li>
       <li><%= @next_event.start %></li>
       <li><%= @next_event.end %></li>
       <li><%= @next_event.provider %></li>
     </ul>
-    <%= link_to('Edit Event', edit_event_path(@next_event.id)) %>
-    <%= link_to('Delete Event', delete_event_path(@next_event.id)) %>
+    <!-- actions for the current event -->
+    <%= link_to('Edit Event', edit_event_path(@next_event.id), :class => "btn btn-default") %>
+    <%= link_to('Delete Event', delete_event_path(@next_event.id), :class => "btn btn-default") %>
+    <!-- view all the participating units for the current event -->
+    <%= link_to('View Schedule', event_participation_path(@next_event.id), :class => "btn btn-default") %>
+
+    <h4><%= @next_event.name %> Registration</h4>
+    <!-- identify the signed in user & their unit number -->
+    <!-- provide a form for them to register for the current event -->
+    <%= form_for(@participation, :url => new_event_participation_path(@next_event.id)) do |f| %>
+      <%= label_tag(:date, "Schedule date") %>
+      <%= f.date_select :date %>
+      <%= label_tag(:time, "Schedule time")%>
+      <%= f.time_select :time %><br>
+      <%= f.submit "Register", :class => "btn btn-default" %>
+    <% end %>
+
   <% end %>
-  <%= link_to('Add Event', new_event_path) %>
 </div>

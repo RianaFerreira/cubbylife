@@ -1,0 +1,6 @@
+<h2>Scheduled Participants for <%= @participation %></h2>
+<ul>
+  <% @participation.each do |p|%>
+    <li><%= p.unit p.date %></li>
+  <% end %>
+</ul>

@@ -20,4 +20,8 @@ Cubbylife::Application.routes.draw do
   get '/units/search' => 'units#search'
   resources :units
 
+  post '/event_participations/:id/create' => 'event_participation#create', :as => 'new_event_participation'
+  resources :event_participation, :except => [:new]
+
+
 end
