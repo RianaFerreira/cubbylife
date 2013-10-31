@@ -11,7 +11,7 @@ module ApplicationHelper
       #raise @authenticated.inspect
       if @authenticated.is_admin?
         links += "#{link_to('Units', units_path)} "
-        links += "#{link_to('Event Schedule', event_participation_index_path)} "
+        #links += "#{link_to('Event Schedule', event_participation_index_path)} "
       end
     else
       links += "#{link_to('Login', login_path)} "

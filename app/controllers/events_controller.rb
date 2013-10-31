@@ -13,11 +13,13 @@ class EventsController < ApplicationController
     #if admin they must have a list of all units to chose from
     #if user their unit must be inferred
     @next_event = Event.find(params[:id])
+
     if @authenticated.is_admin?
       @units = Unit.all
-      EventParticipation.where( :event_id => @next_event.id).each do |participation|
+      @participants = EventParticipation.where( :event_id => @next_event.id)
+      @participants.each do |participation|
         @units.delete(participation.unit)
-      end
+    end
 
     else
       @units << @authenticated.tenant.unit
