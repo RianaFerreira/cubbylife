@@ -47,7 +47,7 @@ class UnitsController < ApplicationController
       redirect_to unit_path(@unit.id)
     else
       flash[:notice] = "Invalid Unit Number: Try Again." unless params[:query].nil?
-      render "search"
+      render "index"
     end
   end
 

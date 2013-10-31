@@ -1,9 +1,18 @@
-<%= form_tag("/new", :method => "post" ) do %>
+<%= form_tag("/new", :method => "post", :class => "form-1" ) do %>
+ <p class="field">
   <%= label_tag(:name, "Name") %>
   <%= text_field_tag(:name) %>
+  <i class="fa fa-user"></i>
+</p>
+<p class="field">
   <%= label_tag(:email, "Email") %>
   <%= email_field(:user, :email) %>
+  <i class="fa fa-envelope"></i>
+</p>
+<p class="field">
   <%= label_tag(:phone, "Phone") %>
   <%= telephone_field(:user, :phone) %>
+  <i class="fa fa-phone-square"></i>
+</p>
 <% end %>
 <%= render "login" %>

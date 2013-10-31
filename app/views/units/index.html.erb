@@ -7,33 +7,45 @@
       <% end %>
     </ul>
   <% end %>
+  <p>
+    <%= link_to('Add Unit', new_unit_path, :class => "btn btn-default") %>
+    <%= link_to('Find Unit', units_search_path, :class => "btn btn-default") %>
+  </p>
 </div>
 
 <div class="col-lg-6">
-  <%= link_to('Add Unit', new_unit_path, :class => "btn btn-default") %>
-  <%= link_to('Find Unit', units_search_path, :class => "btn btn-default") %>
-</div>
+  <p>
+    <h4>Find an Apartment</h4>
+    <%= form_tag("/units/search", :method => "get") do %>
+      <%= label_tag(:query, "Search for unit number ") %>
+      <%= text_field_tag(:query) %>
+      <%= submit_tag("Find Unit", :class => "btn btn-default") %>
+    <% end %>
+  </p>
 
-<div class="col-lg-6">
   <% if @unit.present? %>
+  <p>
     <h4>Apartment <%= @unit.unit_number %> Information</h4>
     <ul>
-        <li><%= @unit.floor %></li>
-        <li><%= @unit.occupants %></li>
-        <li><%= @unit.occupancy_date %></li>
+      <li><%= @unit.floor %></li>
+      <li><%= @unit.occupants %></li>
+      <li><%= @unit.occupancy_date %></li>
     </ul>
-      <%= link_to('Edit Unit', edit_unit_path(@unit.id), :class => "btn btn-default") %>
-      <%= link_to('Delete Unit', unit_path(@unit.id), :method => :delete, :class => "btn btn-default") %>
+  </p>
+  <p>
+    <%= link_to('Edit Unit', edit_unit_path(@unit.id), :class => "btn btn-default") %>
+    <%= link_to('Delete Unit', unit_path(@unit.id), :method => :delete, :class => "btn btn-default") %>
+  </p>
 
  <% if @authenticated.is_admin? && !@participation.empty? %>
   <div>
     <h4>Apartment's Scheduled Events</h4>
-    <table>
+    <table class="table table-striped">
       <tr>
-          <th>unit</th>
-          <th>event</th>
-          <th>date</th>
-          <th>time</th>
+          <thead>unit</thead>
+          <thead>event</thead>
+          <thead>date</thead>
+          <thead>time</thead>
       </tr>
       <% @participation.each do |p| %>
         <tr>

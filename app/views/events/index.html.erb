@@ -1,10 +1,12 @@
 <div class="col-lg-6">
   <h4>Scheduled Events</h4>
+  <!-- only allow the administator to add new events -->
   <% if @authenticated.is_admin? %>
   <p>
     <%= link_to('Add Event', new_event_path, :class => "btn btn-default") %>
   </p>
   <% end %>
+
   <% if @events.present? %>
     <!-- display a list of all events that have been created in order of start date -->
     <% @events.each do |event| %>
@@ -16,8 +18,8 @@
     <p>There are no events scheduled.</p>
   <% end %>
 </div>
-<div class="col-lg-6">
 
+<div class="col-lg-6">
   <!-- by default display the details of the next scheduled event -->
   <% if @next_event.present? %>
     <h4><%= @next_event.name %></h4>
@@ -55,15 +57,16 @@
     <% end %>
   <% end %>
 
+<!-- display all the apartments registered to participate in a selected event -->
   <% if @authenticated.is_admin? && !@participants.empty? %>
   <div>
     <h4>Event's Scheduled Participants</h4>
-    <table>
+    <table class="table table-striped">
       <tr>
-          <th>unit</th>
-          <th>event</th>
-          <th>date</th>
-          <th>time</th>
+          <thead>unit</thead>
+          <thead>event</thead>
+          <thead>date</thead>
+          <thead>time</thead>
       </tr>
       <% @participants.each do |p| %>
         <tr>

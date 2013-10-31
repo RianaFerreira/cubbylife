@@ -1,7 +1,16 @@
-<%= form_tag("/login", :method => "post") do %>
-  <%= label_tag(:username, "Username") %>
-  <%= text_field_tag(:username) %>
-  <%= label_tag(:password, "Password") %>
-  <%= password_field_tag(:password) %>
-  <%= submit_tag("Login", :class => 'button')%>
+<%= form_tag("/login", :method => "post", :class => "form-1") do %>
+  <p class="field">
+    <%#= label_tag(:username, "Username") %>
+    <%= text_field_tag(:username) %>
+    <i class="fa fa-user"></i>
+  </p>
+  <p class="field">
+    <%#= label_tag(:password, "Password") %>
+    <%= password_field_tag(:password) %>
+    <i class="fa fa-lock"></i>
+  </p>
+  <p class="seubmit">
+    <%= submit_tag("Login", :class => 'button')%>
+    <i class="icon-arrow-right icon-large"></i>
+  </p>
 <% end %>
