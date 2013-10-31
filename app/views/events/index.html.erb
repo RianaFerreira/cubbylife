@@ -1,8 +1,10 @@
 <div class="col-lg-6">
   <h4>Scheduled Events</h4>
+  <% if @authenticated.is_admin? %>
   <p>
     <%= link_to('Add Event', new_event_path, :class => "btn btn-default") %>
   </p>
+  <% end %>
   <% if @events.present? %>
     <!-- display a list of all events that have been created in order of start date -->
     <% @events.each do |event| %>
@@ -24,12 +26,13 @@
       <li><%= @next_event.end %></li>
       <li><%= @next_event.provider %></li>
     </ul>
-    <!-- actions for the current event -->
-    <%= link_to('Edit Event', edit_event_path(@next_event.id), :class => "btn btn-default") %>
-    <%= link_to('Delete Event', delete_event_path(@next_event.id), :class => "btn btn-default") %>
-    <!-- view all the participating units for the current event -->
-    <%= link_to('View Schedule', event_participation_path(@next_event.id), :class => "btn btn-default") %>
-
+    <% if @authenticated.is_admin? %>
+      <!-- actions for the current event -->
+      <%= link_to('Edit Event', edit_event_path(@next_event.id), :class => "btn btn-default") %>
+      <%= link_to('Delete Event', delete_event_path(@next_event.id), :class => "btn btn-default") %>
+      <!-- view all the participating units for the current event -->
+      <%= link_to('View Schedule', event_participation_path(@next_event.id), :class => "btn btn-default") %>
+    <% end %>
     <h4><%= @next_event.name %> Registration</h4>
     <!-- identify the signed in user & their unit number -->
     <!-- provide a form for them to register for the current event -->
