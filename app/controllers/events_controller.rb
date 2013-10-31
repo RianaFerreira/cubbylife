@@ -3,14 +3,32 @@ class EventsController < ApplicationController
     @events = Event.order(:start)
     @next_event = @events.first
     @participation = EventParticipation.new
+    redirect_to event_path(@next_event.id)
   end
 
   def show
-   @next_event = Event.find(params[:id])
+    @units = []
+
+    #determine what to display in events based on user role
+    #if admin they must have a list of all units to chose from
+    #if user their unit must be inferred
+    @next_event = Event.find(params[:id])
+    if @authenticated.is_admin?
+      @units = Unit.all
+      EventParticipation.where( :event_id => @next_event.id).each do |participation|
+        @units.delete(participation.unit)
+      end
+
+    else
+      @units << @authenticated.tenant.unit
+      @participation = EventParticipation.where(:unit_id => @authenticated.tenant.unit.id, :event_id => @next_event.id).first
+    end
+
+
    @events = Event.order(:start)
-   @participation = EventParticipation.where(:unit_id => @authenticated.tenant.unit.id, :event_id => @next_event.id).first
    @participation = EventParticipation.new unless @participation
-   #raise @participation.inspect
+
+
    render "index"
   end
 

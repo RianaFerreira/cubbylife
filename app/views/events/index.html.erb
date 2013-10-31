@@ -17,6 +17,7 @@
   <% end %>
 </div>
 <div class="col-lg-6">
+
   <!-- by default display the details of the next scheduled event -->
   <% if @next_event.present? %>
     <h4><%= @next_event.name %></h4>
@@ -26,6 +27,8 @@
       <li><%= @next_event.end %></li>
       <li><%= @next_event.provider %></li>
     </ul>
+
+   <!--  access control check -->
     <% if @authenticated.is_admin? %>
       <!-- actions for the current event -->
       <%= link_to('Edit Event', edit_event_path(@next_event.id), :class => "btn btn-default") %>
@@ -33,11 +36,14 @@
       <!-- view all the participating units for the current event -->
       <%= link_to('View Schedule', event_participation_path(@next_event.id), :class => "btn btn-default") %>
     <% end %>
+
     <h4><%= @next_event.name %> Registration</h4>
     <!-- identify the signed in user & their unit number -->
     <!-- provide a form for them to register for the current event -->
     <% if @participation.id.nil? %>
       <%= form_for(@participation, :url => new_event_participation_path(@next_event.id)) do |f| %>
+        <%= label_tag(:unit_id, "Schedule unit") %>
+        <%= f.collection_select(:unit_id, @units, :id, :unit_number) %><br>
         <%= label_tag(:date, "Schedule date") %>
         <%= f.date_select :date %>
         <%= label_tag(:time, "Schedule time")%>

@@ -8,7 +8,7 @@ class EventParticipationController < ApplicationController
   end
 
   def create
-    @participation = EventParticipation.new(:event_id => params[:id], :unit_id => @authenticated.tenant.unit.id)
+    @participation = EventParticipation.new(:event_id => params[:id], :unit_id => params[:event_participation][:unit_id])
     @participation.date = "#{params[:event_participation]['date(1i)']}-#{params[:event_participation]['date(2i)']}-#{params[:event_participation]['date(3i)']}"
     @participation.time = "#{params[:event_participation]['time(4i)']}:#{params[:event_participation]['time(5i)']}"
     @participation.save
