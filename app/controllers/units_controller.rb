@@ -5,6 +5,7 @@ class UnitsController < ApplicationController
 
   def show
     @unit = Unit.find(params[:id])
+    @participation = EventParticipation.where(:unit_id => @unit.id)
     render "index"
   end
 

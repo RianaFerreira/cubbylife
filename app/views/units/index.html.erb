@@ -24,5 +24,28 @@
     </ul>
       <%= link_to('Edit Unit', edit_unit_path(@unit.id), :class => "btn btn-default") %>
       <%= link_to('Delete Unit', unit_path(@unit.id), :method => :delete, :class => "btn btn-default") %>
+
+ <% if @authenticated.is_admin? && !@participation.empty? %>
+  <div>
+    <h4>Apartment's Scheduled Events</h4>
+    <table>
+      <tr>
+          <th>unit</th>
+          <th>event</th>
+          <th>date</th>
+          <th>time</th>
+      </tr>
+      <% @participation.each do |p| %>
+        <tr>
+          <td><%= p.unit.unit_number %></td>
+          <td><%= p.event.name %></td>
+          <td><%= p.date %></td>
+          <td><%= p.time %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+  <% end %>
+
   <% end %>
 </div>
