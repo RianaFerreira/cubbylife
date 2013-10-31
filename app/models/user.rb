@@ -18,4 +18,7 @@ class User < ActiveRecord::Base
   belongs_to :tenant
   has_and_belongs_to_many :roles
 
+  def is_admin?
+    roles.include?(Role.where(:name => 'admin').first)
+  end
 end

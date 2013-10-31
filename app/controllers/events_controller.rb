@@ -8,7 +8,9 @@ class EventsController < ApplicationController
   def show
    @next_event = Event.find(params[:id])
    @events = Event.order(:start)
-   @participation = EventParticipation.new
+   @participation = EventParticipation.where(:unit_id => @authenticated.tenant.unit.id, :event_id => @next_event.id).first
+   @participation = EventParticipation.new unless @participation
+   #raise @participation.inspect
    render "index"
   end
 

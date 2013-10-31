@@ -33,13 +33,16 @@
     <h4><%= @next_event.name %> Registration</h4>
     <!-- identify the signed in user & their unit number -->
     <!-- provide a form for them to register for the current event -->
-    <%= form_for(@participation, :url => new_event_participation_path(@next_event.id)) do |f| %>
-      <%= label_tag(:date, "Schedule date") %>
-      <%= f.date_select :date %>
-      <%= label_tag(:time, "Schedule time")%>
-      <%= f.time_select :time %><br>
-      <%= f.submit "Register", :class => "btn btn-default" %>
+    <% if @participation.id.nil? %>
+      <%= form_for(@participation, :url => new_event_participation_path(@next_event.id)) do |f| %>
+        <%= label_tag(:date, "Schedule date") %>
+        <%= f.date_select :date %>
+        <%= label_tag(:time, "Schedule time")%>
+        <%= f.time_select :time %><br>
+        <%= f.submit "Register", :class => "btn btn-default" %>
+      <% end %>
+    <% else %>
+      <p>You are scheduled for this event at <%= @participation.date %><%= @participation.time %></p>
     <% end %>
-
   <% end %>
 </div>

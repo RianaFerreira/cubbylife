@@ -30,7 +30,9 @@
     </header>
 
     <div class="container">
-      <div class="welcome">Welcome <i class="fa fa-heart-o"></i> <%= @authenticated.username %></div>
+      <% if @authenticated %>
+        <div class="welcome">Welcome <i class="fa fa-heart-o"></i> <%= @authenticated.username %></div>
+      <% end %>
       <div class="form-group has-error">
         <% if flash[:notice].present? %>
           <p class="alert alert-danger"><%= flash[:notice] %></p>

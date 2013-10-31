@@ -30,10 +30,13 @@ u7 = Unit.create(unit_number: "503E", floor: 5, occupants: 2, occupancy_date: "2
 
 t1 = Tenant.create(:name => 'Fuzzy Lumpkin', :email => 'fuzzy@gmail.com', :phone => '0412015510')
 un1 = User.create(:username => 'fuzzy', :password => 'test')
+un2 = User.create(:username => 'admin', :password => 'admin')
 
 r1 = Role.create(:name => 'tenant', :description => 'leases apartment')
 r2 = Role.create(:name => 'admin', :description => 'building manager')
 
+r1.users << un1
+r2.users << un2
 
 p1 = EventParticipation.create(:date => Date.today, :time => Time.now)
 u1.event_participations << p1
