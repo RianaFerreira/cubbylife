@@ -3,7 +3,7 @@
   <!-- only allow the administator to add new events -->
   <% if @authenticated.is_admin? %>
   <p>
-    <%= link_to('Add Event', new_event_path, :class => "btn btn-default") %>
+    <%= link_to('Add Event', new_event_path, :class => "btn btn-default new-btn") %>
   </p>
   <% end %>
 
@@ -33,40 +33,46 @@
    <!--  access control check -->
     <% if @authenticated.is_admin? %>
       <!-- actions for the current event -->
-      <%= link_to('Edit Event', edit_event_path(@next_event.id), :class => "btn btn-default") %>
-      <%= link_to('Delete Event', delete_event_path(@next_event.id), :class => "btn btn-default") %>
-      <!-- view all the participating units for the current event -->
-      <%#= link_to('View Schedule', event_participation_path(@next_event.id), :class => "btn btn-default") %>
+      <div class="action-btn">
+        <%= link_to('Edit Event', edit_event_path(@next_event.id), :class => "btn btn-default") %>
+        <%= link_to('Delete Event', delete_event_path(@next_event.id), :class => "btn btn-default") %>
+    </div>
     <% end %>
 
     <h4><%= @next_event.name %> Registration</h4>
     <!-- identify the signed in user & their unit number -->
     <!-- provide a form for them to register for the current event -->
     <% if @participation.id.nil? %>
-      <%= form_for(@participation, :url => new_event_participation_path(@next_event.id)) do |f| %>
-        <%= label_tag(:unit_id, "Schedule unit") %>
-        <%= f.collection_select(:unit_id, @units, :id, :unit_number) %><br>
-        <%= label_tag(:date, "Schedule date") %>
-        <%= f.date_select :date %>
-        <%= label_tag(:time, "Schedule time")%>
-        <%= f.time_select :time %><br>
-        <%= f.submit "Register", :class => "btn btn-default" %>
+      <%= form_for(@participation, :url => new_event_participation_path(@next_event.id), :role => "form") do |f| %>
+        <div class="form-group">
+          <%= label_tag(:unit_id, "Schedule unit") %>
+          <%= f.collection_select(:unit_id, @units, :id, :unit_number) %>
+        </div>
+        <div class="form-group">
+          <%= label_tag(:date, "Schedule date") %>
+          <%= f.date_select :date %>
+        </div>
+        <div class="form-group">
+          <%= label_tag(:time, "Schedule time")%>
+          <%= f.time_select :time %><br>
+        </div>
+        <%= f.submit "Register", :class => "btn btn-default new-btn" %>
       <% end %>
     <% else %>
       <p>You are scheduled for this event at <%= @participation.date %><%= @participation.time %></p>
     <% end %>
   <% end %>
-
+</div>
 <!-- display all the apartments registered to participate in a selected event -->
   <% if @authenticated.is_admin? && !@participants.empty? %>
-  <div>
+  <div class="table-responsive">
     <h4>Event's Scheduled Participants</h4>
-    <table class="table table-striped">
+    <table class="table">
       <tr>
-          <thead>unit</thead>
-          <thead>event</thead>
-          <thead>date</thead>
-          <thead>time</thead>
+          <th>unit</th>
+          <th>event</th>
+          <th>date</th>
+          <th>time</th>
       </tr>
       <% @participants.each do |p| %>
         <tr>
@@ -79,5 +85,3 @@
     </table>
   </div>
   <% end %>
-
-</div>

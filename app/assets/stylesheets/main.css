@@ -66,24 +66,23 @@ header a{
   padding: 2em;
 }
 
-.latestEvent ul h3 {
-  font-weight: bold;
-}
-
-.latestEvent li {
+li {
   list-style: none;
   padding: 0.5em;
 }
 
-.home {
-  display: inline-block;
-  width: 60%;
+label {
+  font-weight: normal;
+  text-align: right;
+  width: 30%;
 }
 
-.about
-{
-  display: inline-block;
-  width: 35%;
+.new-btn {
+  margin-left: 50%;
+}
+
+.action-btn {
+  margin-left: 30%;
 }
 
 /*************************************************************************/

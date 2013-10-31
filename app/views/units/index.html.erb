@@ -1,51 +1,48 @@
 <div class="col-lg-6">
   <% if @units.present? %>
-  <h4>Registered Apartments in your building</h4>
+  <h4>Apartments in Building</h4>
+  <%= link_to('Add Unit', new_unit_path, :class => "btn btn-default new-btn") %>
     <ul>
       <% @units.each do |unit| %>
         <li><%= link_to(unit.unit_number, unit_path(unit.id)) %></li>
       <% end %>
     </ul>
   <% end %>
-  <p>
-    <%= link_to('Add Unit', new_unit_path, :class => "btn btn-default") %>
-    <%= link_to('Find Unit', units_search_path, :class => "btn btn-default") %>
-  </p>
 </div>
 
 <div class="col-lg-6">
   <p>
     <h4>Find an Apartment</h4>
     <%= form_tag("/units/search", :method => "get") do %>
-      <%= label_tag(:query, "Search for unit number ") %>
+      <%= label_tag(:query, "Apartment number ") %>
       <%= text_field_tag(:query) %>
       <%= submit_tag("Find Unit", :class => "btn btn-default") %>
     <% end %>
   </p>
 
   <% if @unit.present? %>
-  <p>
-    <h4>Apartment <%= @unit.unit_number %> Information</h4>
-    <ul>
-      <li><%= @unit.floor %></li>
-      <li><%= @unit.occupants %></li>
-      <li><%= @unit.occupancy_date %></li>
-    </ul>
-  </p>
-  <p>
-    <%= link_to('Edit Unit', edit_unit_path(@unit.id), :class => "btn btn-default") %>
-    <%= link_to('Delete Unit', unit_path(@unit.id), :method => :delete, :class => "btn btn-default") %>
-  </p>
-
- <% if @authenticated.is_admin? && !@participation.empty? %>
-  <div>
+    <p>
+      <h4>Apartment <%= @unit.unit_number %> Information</h4>
+      <ul>
+        <li>Floor <%= @unit.floor %></li>
+        <li>Number Occupants <%= @unit.occupants %></li>
+        <li>Occupancy Date<%= @unit.occupancy_date %></li>
+      </ul>
+    </p>
+    <div class="action-btn">
+      <%= link_to('Edit', edit_unit_path(@unit.id), :class => "btn btn-default") %>
+      <%= link_to('Delete', unit_path(@unit.id), :method => :delete, :class => "btn btn-default") %>
+    </div>
+    </div>
+    <% if @authenticated.is_admin? && !@participation.empty? %>
+  <div class="table-responsive">
     <h4>Apartment's Scheduled Events</h4>
-    <table class="table table-striped">
+    <table class="table">
       <tr>
-          <thead>unit</thead>
-          <thead>event</thead>
-          <thead>date</thead>
-          <thead>time</thead>
+          <th>Apartment</th>
+          <th>Event</th>
+          <th>Date</th>
+          <th>Time</th>
       </tr>
       <% @participation.each do |p| %>
         <tr>
@@ -57,7 +54,6 @@
       <% end %>
     </table>
   </div>
+<% end %>
   <% end %>
 
-  <% end %>
-</div>

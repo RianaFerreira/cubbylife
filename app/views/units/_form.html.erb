@@ -7,19 +7,23 @@
       </ol>
   <% end %>
 
-  <%= form_for(@unit) do |f| %>
-    <%= label_tag(:unit_number, "Unit Number") %>
-    <%= f.text_field :unit_number %><br>
-
-    <%= label_tag(:floor, "Floor") %>
-    <%= f.text_field :floor %><br>
-
-    <%= label_tag(:occupants, "Number of Occupants") %>
-    <%= f.text_field :occupants %><br>
-
-    <%= label_tag(:occupancy_date, "Occupancy Date") %>
-    <%= f.date_select :occupancy_date %><br>
-
-    <%= submit_tag("Submit", :class => "btn btn-default") %>
+  <%= form_for(@unit, :role => "form") do |f| %>
+    <div class="form-group">
+      <%= label_tag(:unit_number, "Number") %>
+      <%= f.text_field :unit_number %><br>
+    </div>
+    <div class="form-group">
+      <%= label_tag(:floor, "Floor") %>
+      <%= f.text_field :floor %><br>
+    </div>
+    <div class="form-group">
+      <%= label_tag(:occupants, "Number of Occupants") %>
+      <%= f.text_field :occupants %><br>
+    </div>
+    <div class="form-group">
+      <%= label_tag(:occupancy_date, "Occupancy Date") %>
+      <%= f.date_select :occupancy_date %><br>
+    </div>
+    <%= submit_tag("Submit", :class => "btn btn-default new-btn") %>
   <% end %>
 </div>
