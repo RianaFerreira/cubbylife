@@ -19,7 +19,7 @@ class EventsController < ApplicationController
       @participants = EventParticipation.where( :event_id => @next_event.id)
       @participants.each do |participation|
         @units.delete(participation.unit)
-    end
+      end
 
     else
       @units << @authenticated.tenant.unit

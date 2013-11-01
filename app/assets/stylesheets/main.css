@@ -5,15 +5,11 @@
 }
 
 html {
-  height: 100%;
-  background-image: url(cubbylife.png);
+  background: url(cubbylife.png) no-repeat center center fixed;
   background-size: cover;
-  background-repeat: no-repeat;
-  background-position: 50% 50%;
 }
 
 body {
-  height: 100%;
   max-width: 940px;
   margin: 0 auto;
   background-color: rgba(253, 255, 253, .5);
