@@ -192,7 +192,7 @@ label {
 }
 
 .form-1 .submit:after {
-    /* Size and position */
+    /* Size and position*/
     content: "";
     width: 10px;
     height: 10px;
@@ -264,4 +264,3 @@ label {
   }
 
 }
-*/
