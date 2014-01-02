@@ -28,8 +28,8 @@ ActiveRecord::Schema.define(:version => 20131026033250) do
     t.string   "provider"
     t.decimal  "cost",        :precision => 8, :scale => 2
     t.string   "frequency"
-    t.datetime "created_at",                                :null => false
-    t.datetime "updated_at",                                :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "roles", :force => true do |t|
@@ -49,8 +49,8 @@ ActiveRecord::Schema.define(:version => 20131026033250) do
     t.text     "email"
     t.integer  "phone"
     t.integer  "unit_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   create_table "units", :force => true do |t|

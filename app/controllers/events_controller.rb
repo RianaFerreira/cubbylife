@@ -26,10 +26,8 @@ class EventsController < ApplicationController
       @participation = EventParticipation.where(:unit_id => @authenticated.tenant.unit.id, :event_id => @next_event.id).first
     end
 
-
    @events = Event.order(:start)
    @participation = EventParticipation.new unless @participation
-
 
    render "index"
   end

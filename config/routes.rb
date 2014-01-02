@@ -6,6 +6,9 @@ Cubbylife::Application.routes.draw do
   post '/login' => 'session#create'
   delete '/login' => 'session#destroy'
 
+  get '/user' => 'user#new'
+  post '/user' => 'user#create'
+
   get '/events' => 'events#index'
   get '/events/:id' => 'events#show', :as => 'event'
 
@@ -22,6 +25,5 @@ Cubbylife::Application.routes.draw do
 
   post '/event_participations/:id/create' => 'event_participation#create', :as => 'new_event_participation'
   resources :event_participation, :except => [:new]
-
 
 end
