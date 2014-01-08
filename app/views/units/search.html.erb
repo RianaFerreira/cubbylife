@@ -1,7 +1,0 @@
-<h4>Find an Apartment</h4>
-
-<%= form_tag("/units/search", :method => "get") do %>
-  <%= label_tag(:query, "Search for unit number ") %>
-  <%= text_field_tag(:query) %>
-  <%= submit_tag("Find Unit", :class => "btn btn-default") %>
-<% end %>
