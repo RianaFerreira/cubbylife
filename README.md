@@ -24,7 +24,7 @@ http://api.rubyonrails.org/
 http://guides.rubyonrails.org/
 http://getbootstrap.com
 
-## FUTURE FEATURES
+## WISHLIST
 * User create feature to replace the user seeding
 * Notifications for new events created
 * Calendar feature for event scheduling to avoid timeslot conflicts
